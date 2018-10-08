@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>OioUbl.Schematron.SimpleInvoice</id>
+    <version>$version$</version>
+    <authors>Magnus Akselvoll - Ibistic Technologies</authors>
+    <owners>Ibistic Technologies</owners>
+    <licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Compiled version of the OioUbl Schematron schemas relevant for the simple invoice profile</description>
+    <releaseNotes>
+      - 1.10.0: Release of Schematron 1.10.0, based on 1.10.0.35220 (https://www.digitaliser.dk/resource/4101987)
+      - 1.9.0: Release of Schematron 1.9.0, based on 1.9.0.34429 (https://digitaliser.dk/resource/3718578)
+      - 1.9.0-RC1: RC1 of Schematron 1.9.0, based on 1.9.0.RC1_34320 (https://digitaliser.dk/resource/3661303)
+      - 1.8.0: Initial release, based on 1.8.0.33360 (https://digitaliser.dk/resource/3193911).
+    </releaseNotes>
+    <copyright>No copyright claimed to this work. Please refer to the copyright of the original resources (https://digitaliser.dk/).</copyright>
+    <tags>oioubl</tags>
+  </metadata>
+</package>
