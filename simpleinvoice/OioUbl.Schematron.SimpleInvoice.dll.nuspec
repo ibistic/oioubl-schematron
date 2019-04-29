@@ -9,6 +9,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Compiled version of the OioUbl Schematron schemas relevant for the simple invoice profile</description>
     <releaseNotes>
+      - 1.11.1: Release of Schematron 1.11.1, based on 1.11.1.35666 (https://www.digitaliser.dk/resource/4487723)
       - 1.10.0: Release of Schematron 1.10.0, based on 1.10.0.35220 (https://www.digitaliser.dk/resource/4101987)
       - 1.9.0: Release of Schematron 1.9.0, based on 1.9.0.34429 (https://digitaliser.dk/resource/3718578)
       - 1.9.0-RC1: RC1 of Schematron 1.9.0, based on 1.9.0.RC1_34320 (https://digitaliser.dk/resource/3661303)
