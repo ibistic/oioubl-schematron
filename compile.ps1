@@ -1,5 +1,5 @@
 Param(
-    [string]$xsltcPath = "C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.6.1 Tools\xsltc.exe"
+    [string]$xsltcPath = "C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\xsltc.exe"
 )
 
 $version = Get-Content .\version.json -Raw | ConvertFrom-Json | Select-Object -ExpandProperty AssemblyVersion
