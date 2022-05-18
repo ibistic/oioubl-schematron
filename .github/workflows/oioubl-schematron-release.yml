@@ -5,6 +5,8 @@ on:
 
 env:
   PACKAGES_USER: '${{ github.actor }}'
+  FULL_NUSPEC_PATH: './full/OioUbl.Schematron.dll.nuspec'
+  SIMPLEINVOICE_NUSPEC_PATH: './simpleinvoice/OioUbl.Schematron.SimpleInvoice.dll.nuspec'
 #  PACKAGES_TOKEN: '${{secrets.GH_PACKAGES_TOKEN}}'
 
 jobs:
@@ -19,8 +21,11 @@ jobs:
         shell: pwsh
         run: ./compile.ps1
 
-      - name: Nuget pack 
-        run: nuget pack **/*.nuspec
+      - name: Nuget pack full
+        run: nuget pack ${{env.FULL_NUSPEC_PATH}} 
+
+      - name: Nuget pack simpleinvoiec
+        run: nuget pack ${{env.SIMPLEINVOICE_NUSPEC_PATH}} 
 
       - name: Upload build results
         uses: actions/upload-artifact@v2
