@@ -7,8 +7,8 @@ env:
   PACKAGES_USER: '${{ github.actor }}'
   FULL_NUSPEC_PATH: './full/OioUbl.Schematron.dll.nuspec'
   SIMPLEINVOICE_NUSPEC_PATH: './simpleinvoice/OioUbl.Schematron.SimpleInvoice.dll.nuspec'
-#  PACKAGES_TOKEN: '${{secrets.GH_PACKAGES_TOKEN}}'
-
+  NUGET_SOURCE_URL: 'https://api.nuget.org/v3/index.json'
+  
 jobs:
   build:
     runs-on: windows-latest
@@ -38,6 +38,6 @@ jobs:
                 **\*.dll
                 **\*.nupkg
 
-#      - name: Push package
-#        run: dotnet nuget push *.nupkg -k ${{secrets.GH_PACKAGES_TOKEN}} -s ${{env.NUGET_SOURCE_URL}}
+      - name: Push packages
+        run: dotnet nuget push *.nupkg -ApiKey ${{secrets.GH_PACKAGES_TOKEN}} -Source ${{env.NUGET_SOURCE_URL}}
 
