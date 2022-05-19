@@ -28,7 +28,7 @@ jobs:
       - name: Nuget pack full
         run: nuget pack ${{env.FULL_NUSPEC_PATH}} -Version ${{env.NUGET_PACKAGE_VERSION}}
 
-      - name: Nuget pack simpleinvoiec
+      - name: Nuget pack simpleinvoice
         run: nuget pack ${{env.SIMPLEINVOICE_NUSPEC_PATH}} -Version ${{env.NUGET_PACKAGE_VERSION}}
 
       - name: Upload build results
