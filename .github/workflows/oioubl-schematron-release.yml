@@ -23,7 +23,7 @@ jobs:
 
       - name: Set version environment variable
         shell: pwsh
-        run: ./write-version.variable.ps1
+        run: ./write-version-variable.ps1
 
       - name: Nuget pack full
         run: nuget pack ${{env.FULL_NUSPEC_PATH}} -Version ${{env.NUGET_PACKAGE_VERSION}}
