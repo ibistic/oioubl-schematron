@@ -21,11 +21,15 @@ jobs:
         shell: pwsh
         run: ./compile.ps1
 
+      - name: Set version environment variable
+        shell: pwsh
+        run: ./write-version.variable.ps1
+
       - name: Nuget pack full
-        run: nuget pack ${{env.FULL_NUSPEC_PATH}} 
+        run: nuget pack ${{env.FULL_NUSPEC_PATH}} -Version ${{env.NUGET_PACKAGE_VERSION}}
 
       - name: Nuget pack simpleinvoiec
-        run: nuget pack ${{env.SIMPLEINVOICE_NUSPEC_PATH}} 
+        run: nuget pack ${{env.SIMPLEINVOICE_NUSPEC_PATH}} -Version ${{env.NUGET_PACKAGE_VERSION}}
 
       - name: Upload build results
         uses: actions/upload-artifact@v2
