@@ -39,5 +39,5 @@ jobs:
                 **\*.nupkg
 
       - name: Push packages
-        run: dotnet nuget push *.nupkg -ApiKey ${{secrets.GH_PACKAGES_TOKEN}} -Source ${{env.NUGET_SOURCE_URL}}
+        run: dotnet nuget push *.nupkg --api-key ${{secrets.GH_PACKAGES_TOKEN}} --source ${{env.NUGET_SOURCE_URL}}
 
