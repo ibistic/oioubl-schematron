@@ -10,7 +10,7 @@
                 xmlns:udt="urn:un:unece:uncefact:data:specification:UnqualifiedDataTypesSchemaModule:2"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-                version="1.0"><!--Implementers: please note that overriding process-prolog or process-root is
+                version="2.0"><!--Implementers: please note that overriding process-prolog or process-root is
     the preferred method for meta-stylesheets to use where possible. The name or details of
     this mode may change during 1Q 2007.-->
 
@@ -128,7 +128,7 @@
    <!--SCHEMA METADATA-->
    <xsl:template match="/">
       <Schematron>
-         <Information>Checking OIOUBL-2.1 CreditNote, 2022-05-11, Version 1.12.2.bb920ae</Information>
+         <Information>Checking OIOUBL-2.1 CreditNote, 2022-09-30, Version 1.13.RC.1b349ec</Information>
          <xsl:apply-templates select="/" mode="M10"/>
          <xsl:apply-templates select="/" mode="M14"/>
          <xsl:apply-templates select="/" mode="M15"/>
@@ -589,14 +589,14 @@
       </xsl:choose>
       <!--ASSERT -->
       <xsl:choose>
-         <xsl:when test="cbc:CustomizationID='OIOUBL-2.0' or cbc:CustomizationID='OIOUBL-2.01' or cbc:CustomizationID='OIOUBL-2.02' or cbc:CustomizationID='OIOUBL-2.1'"/>
+         <xsl:when test="cbc:CustomizationID='OIOUBL-2.01' or cbc:CustomizationID='OIOUBL-2.02' or cbc:CustomizationID='OIOUBL-2.1'"/>
          <xsl:otherwise>
             <Error>
                <xsl:attribute name="context">
                   <xsl:value-of select="concat(name(parent::*),'/',name())"/>
                </xsl:attribute>
-               <Pattern>cbc:CustomizationID='OIOUBL-2.0' or cbc:CustomizationID='OIOUBL-2.01' or cbc:CustomizationID='OIOUBL-2.02' or cbc:CustomizationID='OIOUBL-2.1'</Pattern>
-               <Description>[F-LIB002]Invalid CustomizationID. Must be either 'OIOUBL-2.0', 'OIOUBL-2.01', 'OIOUBL-2.02' or 'OIOUBL-2.1'</Description>
+               <Pattern>cbc:CustomizationID='OIOUBL-2.01' or cbc:CustomizationID='OIOUBL-2.02' or cbc:CustomizationID='OIOUBL-2.1'</Pattern>
+               <Description>[F-LIB002]Invalid CustomizationID. Must be either 'OIOUBL-2.01', 'OIOUBL-2.02' or 'OIOUBL-2.1'</Description>
                <Xpath>
                   <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
                </Xpath>
@@ -924,12 +924,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="local-name(following-sibling::*) = local-name(current()) and following-sibling::*/@languageID = self::*/@languageID">
+      <xsl:if test="following-sibling::*/@languageID = self::*/@languageID">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>local-name(following-sibling::*) = local-name(current()) and following-sibling::*/@languageID = self::*/@languageID</Pattern>
+            <Pattern>following-sibling::*/@languageID = self::*/@languageID</Pattern>
             <Description>[W-LIB012] Multilanguage error. Replicated <xsl:text/>
                <xsl:value-of select="name(.)"/>
                <xsl:text/> elements with same languageID attribute value</Description>
@@ -1483,12 +1483,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="local-name(following-sibling::*) = local-name(current()) and following-sibling::*/@languageID = self::*/@languageID">
+      <xsl:if test="following-sibling::*/@languageID = self::*/@languageID">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>local-name(following-sibling::*) = local-name(current()) and following-sibling::*/@languageID = self::*/@languageID</Pattern>
+            <Pattern>following-sibling::*/@languageID = self::*/@languageID</Pattern>
             <Description>[W-LIB223] Multilanguage error. Replicated Description elements with same languageID attribute value</Description>
             <Xpath>
                <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
@@ -1620,12 +1620,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="local-name(following-sibling::*) = local-name(current()) and following-sibling::*/@languageID = self::*/@languageID">
+      <xsl:if test="following-sibling::*/@languageID = self::*/@languageID">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>local-name(following-sibling::*) = local-name(current()) and following-sibling::*/@languageID = self::*/@languageID</Pattern>
+            <Pattern>following-sibling::*/@languageID = self::*/@languageID</Pattern>
             <Description>[W-LIB223] Multilanguage error. Replicated Description elements with same languageID attribute value</Description>
             <Xpath>
                <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
@@ -3162,12 +3162,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="local-name(following-sibling::*) = local-name(current()) and following-sibling::*/cbc:Name/@languageID = self::*/cbc:Name/@languageID">
+      <xsl:if test="following-sibling::*/cbc:Name/@languageID = self::*/cbc:Name/@languageID">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>local-name(following-sibling::*) = local-name(current()) and following-sibling::*/cbc:Name/@languageID = self::*/cbc:Name/@languageID</Pattern>
+            <Pattern>following-sibling::*/cbc:Name/@languageID = self::*/cbc:Name/@languageID</Pattern>
             <Description>[W-LIB220] Multilanguage error. Replicated PartyName classes with same Name@languageID attribute value</Description>
             <Xpath>
                <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
@@ -3366,12 +3366,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
+      <xsl:if test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')</Pattern>
+            <Pattern>(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)</Pattern>
             <Description>[F-LIB031] An Unstructured address is only allowed to have AddressLine elements</Description>
             <Xpath>
                <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
@@ -3457,12 +3457,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
+      <xsl:if test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')</Pattern>
+            <Pattern>(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)</Pattern>
             <Description>[F-LIB038] Only the ID is used for a StructuredID address type</Description>
             <Xpath>
                <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
@@ -3483,12 +3483,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0')">
+      <xsl:if test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0)">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0')</Pattern>
+            <Pattern>(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0)</Pattern>
             <Description>[F-LIB040] Only Region, District, and/or Country/IdentificationCode can be used for a StructuredRegion address type</Description>
             <Xpath>
                <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
@@ -3668,12 +3668,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="local-name(following-sibling::*) = local-name(current()) and following-sibling::*/@languageID = self::*/@languageID">
+      <xsl:if test="following-sibling::*/@languageID = self::*/@languageID">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>local-name(following-sibling::*) = local-name(current()) and following-sibling::*/@languageID = self::*/@languageID</Pattern>
+            <Pattern>following-sibling::*/@languageID = self::*/@languageID</Pattern>
             <Description>[W-LIB223] Multilanguage error. Replicated Description elements with same languageID attribute value</Description>
             <Xpath>
                <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
@@ -3872,12 +3872,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
+      <xsl:if test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')</Pattern>
+            <Pattern>(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)</Pattern>
             <Description>[F-LIB031] An Unstructured address is only allowed to have AddressLine elements</Description>
             <Xpath>
                <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
@@ -3963,12 +3963,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
+      <xsl:if test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')</Pattern>
+            <Pattern>(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)</Pattern>
             <Description>[F-LIB038] Only the ID is used for a StructuredID address type</Description>
             <Xpath>
                <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
@@ -3989,12 +3989,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0')">
+      <xsl:if test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0)">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0')</Pattern>
+            <Pattern>(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0)</Pattern>
             <Description>[F-LIB040] Only Region, District, and/or Country/IdentificationCode can be used for a StructuredRegion address type</Description>
             <Xpath>
                <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
@@ -5289,12 +5289,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="local-name(following-sibling::*) = local-name(current()) and following-sibling::*/cbc:Name/@languageID = self::*/cbc:Name/@languageID">
+      <xsl:if test="following-sibling::*/cbc:Name/@languageID = self::*/cbc:Name/@languageID">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>local-name(following-sibling::*) = local-name(current()) and following-sibling::*/cbc:Name/@languageID = self::*/cbc:Name/@languageID</Pattern>
+            <Pattern>following-sibling::*/cbc:Name/@languageID = self::*/cbc:Name/@languageID</Pattern>
             <Description>[W-LIB220] Multilanguage error. Replicated PartyName classes with same Name@languageID attribute value</Description>
             <Xpath>
                <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
@@ -5493,12 +5493,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
+      <xsl:if test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')</Pattern>
+            <Pattern>(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)</Pattern>
             <Description>[F-LIB031] An Unstructured address is only allowed to have AddressLine elements</Description>
             <Xpath>
                <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
@@ -5584,12 +5584,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
+      <xsl:if test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')</Pattern>
+            <Pattern>(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)</Pattern>
             <Description>[F-LIB038] Only the ID is used for a StructuredID address type</Description>
             <Xpath>
                <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
@@ -5610,12 +5610,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0')">
+      <xsl:if test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0)">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0')</Pattern>
+            <Pattern>(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0)</Pattern>
             <Description>[F-LIB040] Only Region, District, and/or Country/IdentificationCode can be used for a StructuredRegion address type</Description>
             <Xpath>
                <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
@@ -5795,12 +5795,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="local-name(following-sibling::*) = local-name(current()) and following-sibling::*/@languageID = self::*/@languageID">
+      <xsl:if test="following-sibling::*/@languageID = self::*/@languageID">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>local-name(following-sibling::*) = local-name(current()) and following-sibling::*/@languageID = self::*/@languageID</Pattern>
+            <Pattern>following-sibling::*/@languageID = self::*/@languageID</Pattern>
             <Description>[W-LIB223] Multilanguage error. Replicated Description elements with same languageID attribute value</Description>
             <Xpath>
                <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
@@ -5999,12 +5999,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
+      <xsl:if test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')</Pattern>
+            <Pattern>(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)</Pattern>
             <Description>[F-LIB031] An Unstructured address is only allowed to have AddressLine elements</Description>
             <Xpath>
                <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
@@ -6090,12 +6090,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
+      <xsl:if test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')</Pattern>
+            <Pattern>(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)</Pattern>
             <Description>[F-LIB038] Only the ID is used for a StructuredID address type</Description>
             <Xpath>
                <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
@@ -6116,12 +6116,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0')">
+      <xsl:if test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0)">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0')</Pattern>
+            <Pattern>(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0)</Pattern>
             <Description>[F-LIB040] Only Region, District, and/or Country/IdentificationCode can be used for a StructuredRegion address type</Description>
             <Xpath>
                <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
@@ -7404,12 +7404,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="local-name(following-sibling::*) = local-name(current()) and following-sibling::*/cbc:Name/@languageID = self::*/cbc:Name/@languageID">
+      <xsl:if test="following-sibling::*/cbc:Name/@languageID = self::*/cbc:Name/@languageID">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>local-name(following-sibling::*) = local-name(current()) and following-sibling::*/cbc:Name/@languageID = self::*/cbc:Name/@languageID</Pattern>
+            <Pattern>following-sibling::*/cbc:Name/@languageID = self::*/cbc:Name/@languageID</Pattern>
             <Description>[W-LIB220] Multilanguage error. Replicated PartyName classes with same Name@languageID attribute value</Description>
             <Xpath>
                <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
@@ -7608,12 +7608,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
+      <xsl:if test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')</Pattern>
+            <Pattern>(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)</Pattern>
             <Description>[F-LIB031] An Unstructured address is only allowed to have AddressLine elements</Description>
             <Xpath>
                <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
@@ -7699,12 +7699,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
+      <xsl:if test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')</Pattern>
+            <Pattern>(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)</Pattern>
             <Description>[F-LIB038] Only the ID is used for a StructuredID address type</Description>
             <Xpath>
                <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
@@ -7725,12 +7725,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0')">
+      <xsl:if test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0)">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0')</Pattern>
+            <Pattern>(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0)</Pattern>
             <Description>[F-LIB040] Only Region, District, and/or Country/IdentificationCode can be used for a StructuredRegion address type</Description>
             <Xpath>
                <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
@@ -7910,12 +7910,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="local-name(following-sibling::*) = local-name(current()) and following-sibling::*/@languageID = self::*/@languageID">
+      <xsl:if test="following-sibling::*/@languageID = self::*/@languageID">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>local-name(following-sibling::*) = local-name(current()) and following-sibling::*/@languageID = self::*/@languageID</Pattern>
+            <Pattern>following-sibling::*/@languageID = self::*/@languageID</Pattern>
             <Description>[W-LIB223] Multilanguage error. Replicated Description elements with same languageID attribute value</Description>
             <Xpath>
                <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
@@ -8114,12 +8114,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
+      <xsl:if test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')</Pattern>
+            <Pattern>(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)</Pattern>
             <Description>[F-LIB031] An Unstructured address is only allowed to have AddressLine elements</Description>
             <Xpath>
                <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
@@ -8205,12 +8205,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
+      <xsl:if test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')</Pattern>
+            <Pattern>(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)</Pattern>
             <Description>[F-LIB038] Only the ID is used for a StructuredID address type</Description>
             <Xpath>
                <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
@@ -8231,12 +8231,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0')">
+      <xsl:if test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0)">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0')</Pattern>
+            <Pattern>(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0)</Pattern>
             <Description>[F-LIB040] Only Region, District, and/or Country/IdentificationCode can be used for a StructuredRegion address type</Description>
             <Xpath>
                <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
@@ -9478,12 +9478,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="local-name(following-sibling::*) = local-name(current()) and following-sibling::*/cbc:Name/@languageID = self::*/cbc:Name/@languageID">
+      <xsl:if test="following-sibling::*/cbc:Name/@languageID = self::*/cbc:Name/@languageID">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>local-name(following-sibling::*) = local-name(current()) and following-sibling::*/cbc:Name/@languageID = self::*/cbc:Name/@languageID</Pattern>
+            <Pattern>following-sibling::*/cbc:Name/@languageID = self::*/cbc:Name/@languageID</Pattern>
             <Description>[W-LIB220] Multilanguage error. Replicated PartyName classes with same Name@languageID attribute value</Description>
             <Xpath>
                <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
@@ -9682,12 +9682,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
+      <xsl:if test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')</Pattern>
+            <Pattern>(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)</Pattern>
             <Description>[F-LIB031] An Unstructured address is only allowed to have AddressLine elements</Description>
             <Xpath>
                <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
@@ -9773,12 +9773,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
+      <xsl:if test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')</Pattern>
+            <Pattern>(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)</Pattern>
             <Description>[F-LIB038] Only the ID is used for a StructuredID address type</Description>
             <Xpath>
                <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
@@ -9799,12 +9799,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0')">
+      <xsl:if test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0)">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0')</Pattern>
+            <Pattern>(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0)</Pattern>
             <Description>[F-LIB040] Only Region, District, and/or Country/IdentificationCode can be used for a StructuredRegion address type</Description>
             <Xpath>
                <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
@@ -9984,12 +9984,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="local-name(following-sibling::*) = local-name(current()) and following-sibling::*/@languageID = self::*/@languageID">
+      <xsl:if test="following-sibling::*/@languageID = self::*/@languageID">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>local-name(following-sibling::*) = local-name(current()) and following-sibling::*/@languageID = self::*/@languageID</Pattern>
+            <Pattern>following-sibling::*/@languageID = self::*/@languageID</Pattern>
             <Description>[W-LIB223] Multilanguage error. Replicated Description elements with same languageID attribute value</Description>
             <Xpath>
                <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
@@ -10188,12 +10188,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
+      <xsl:if test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')</Pattern>
+            <Pattern>(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)</Pattern>
             <Description>[F-LIB031] An Unstructured address is only allowed to have AddressLine elements</Description>
             <Xpath>
                <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
@@ -10279,12 +10279,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
+      <xsl:if test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')</Pattern>
+            <Pattern>(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)</Pattern>
             <Description>[F-LIB038] Only the ID is used for a StructuredID address type</Description>
             <Xpath>
                <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
@@ -10305,12 +10305,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0')">
+      <xsl:if test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0)">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0')</Pattern>
+            <Pattern>(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0)</Pattern>
             <Description>[F-LIB040] Only Region, District, and/or Country/IdentificationCode can be used for a StructuredRegion address type</Description>
             <Xpath>
                <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
@@ -12231,12 +12231,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="local-name(following-sibling::*) = local-name(current()) and following-sibling::*/@languageID = self::*/@languageID">
+      <xsl:if test="following-sibling::*/@languageID = self::*/@languageID">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>local-name(following-sibling::*) = local-name(current()) and following-sibling::*/@languageID = self::*/@languageID</Pattern>
+            <Pattern>following-sibling::*/@languageID = self::*/@languageID</Pattern>
             <Description>[W-LIB223] Multilanguage error. Replicated Description elements with same languageID attribute value</Description>
             <Xpath>
                <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
@@ -12641,12 +12641,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="local-name(following-sibling::*) = local-name(current()) and following-sibling::*/@languageID = self::*/@languageID">
+      <xsl:if test="following-sibling::*/@languageID = self::*/@languageID">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>local-name(following-sibling::*) = local-name(current()) and following-sibling::*/@languageID = self::*/@languageID</Pattern>
+            <Pattern>following-sibling::*/@languageID = self::*/@languageID</Pattern>
             <Description>[W-LIB223] Multilanguage error. Replicated Description elements with same languageID attribute value</Description>
             <Xpath>
                <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
@@ -13051,12 +13051,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="local-name(following-sibling::*) = local-name(current()) and following-sibling::*/@languageID = self::*/@languageID">
+      <xsl:if test="following-sibling::*/@languageID = self::*/@languageID">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>local-name(following-sibling::*) = local-name(current()) and following-sibling::*/@languageID = self::*/@languageID</Pattern>
+            <Pattern>following-sibling::*/@languageID = self::*/@languageID</Pattern>
             <Description>[W-LIB223] Multilanguage error. Replicated Description elements with same languageID attribute value</Description>
             <Xpath>
                <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
@@ -13461,12 +13461,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="local-name(following-sibling::*) = local-name(current()) and following-sibling::*/@languageID = self::*/@languageID">
+      <xsl:if test="following-sibling::*/@languageID = self::*/@languageID">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>local-name(following-sibling::*) = local-name(current()) and following-sibling::*/@languageID = self::*/@languageID</Pattern>
+            <Pattern>following-sibling::*/@languageID = self::*/@languageID</Pattern>
             <Description>[W-LIB223] Multilanguage error. Replicated Description elements with same languageID attribute value</Description>
             <Xpath>
                <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
@@ -13672,12 +13672,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="cbc:MultiplierFactorNumeric and ((cbc:Amount - (cbc:BaseAmount * cbc:MultiplierFactorNumeric) &lt; '-1.00') or (cbc:Amount - (cbc:BaseAmount * cbc:MultiplierFactorNumeric) &gt; '1.00'))">
+      <xsl:if test="cbc:MultiplierFactorNumeric and ((cbc:Amount - (cbc:BaseAmount * cbc:MultiplierFactorNumeric) &lt; -1.00) or (cbc:Amount - (cbc:BaseAmount * cbc:MultiplierFactorNumeric) &gt; 1.00))">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>cbc:MultiplierFactorNumeric and ((cbc:Amount - (cbc:BaseAmount * cbc:MultiplierFactorNumeric) &lt; '-1.00') or (cbc:Amount - (cbc:BaseAmount * cbc:MultiplierFactorNumeric) &gt; '1.00'))</Pattern>
+            <Pattern>cbc:MultiplierFactorNumeric and ((cbc:Amount - (cbc:BaseAmount * cbc:MultiplierFactorNumeric) &lt; -1.00) or (cbc:Amount - (cbc:BaseAmount * cbc:MultiplierFactorNumeric) &gt; 1.00))</Pattern>
             <Description>[F-LIB228] Amount must equal BaseAmount * MultiplierFactorNumeric</Description>
             <Xpath>
                <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
@@ -14510,6 +14510,53 @@
             </Xpath>
          </Error>
       </xsl:if>
+      <!--REPORT -->
+      <xsl:if test="cac:TaxCategory/cbc:ID = 'StandardRated' and cac:TaxCategory/cbc:Percent = '0,00'">
+         <Error>
+            <xsl:attribute name="context">
+               <xsl:value-of select="concat(name(parent::*),'/',name())"/>
+            </xsl:attribute>
+            <Pattern>cac:TaxCategory/cbc:ID = 'StandardRated' and cac:TaxCategory/cbc:Percent = '0,00'</Pattern>
+            <Description>[F-LIB382] When 'TaxCategor\ID' = 'StandardRated', 'TaxCategory\Percent' can not be '0.00'</Description>
+            <Xpath>
+               <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
+            </Xpath>
+         </Error>
+      </xsl:if>
+      <xsl:variable name="CalculatedVat"
+                    select="(cbc:TaxableAmount div 100) * cac:TaxCategory/cbc:Percent"/>
+      <!--REPORT -->
+      <xsl:if test="cac:TaxCategory/cbc:ID = 'StandardRated' and cbc:TaxableAmount &gt; 0 and cbc:TaxAmount = 0 and xs:decimal($CalculatedVat) &gt;= 0.005">
+         <Error>
+            <xsl:attribute name="context">
+               <xsl:value-of select="concat(name(parent::*),'/',name())"/>
+            </xsl:attribute>
+            <Pattern>cac:TaxCategory/cbc:ID = 'StandardRated' and cbc:TaxableAmount &gt; 0 and cbc:TaxAmount = 0 and xs:decimal($CalculatedVat) &gt;= 0.005</Pattern>
+            <Description>[F-LIB381] Invalid VAT TaxAmount - When TaxCategory/ID are 'StandardRated' and TaxableAmount &gt; 0 (<xsl:text/>
+               <xsl:value-of select="cbc:TaxableAmount"/>
+               <xsl:text/>) TaxAmount can't be '(<xsl:text/>
+               <xsl:value-of select="cbc:TaxAmount"/>
+               <xsl:text/>)' unless calculated vat '(<xsl:text/>
+               <xsl:value-of select="$CalculatedVat"/>
+               <xsl:text/>)' are less then 0.005</Description>
+            <Xpath>
+               <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
+            </Xpath>
+         </Error>
+      </xsl:if>
+      <!--REPORT -->
+      <xsl:if test="cbc:TransactionCurrencyTaxAmount and not(cac:TaxCategory/cbc:ID = 'StandardRated')">
+         <Error>
+            <xsl:attribute name="context">
+               <xsl:value-of select="concat(name(parent::*),'/',name())"/>
+            </xsl:attribute>
+            <Pattern>cbc:TransactionCurrencyTaxAmount and not(cac:TaxCategory/cbc:ID = 'StandardRated')</Pattern>
+            <Description>[F-LIB373] TransactionCurrencyTaxAmount only valid when TaxCategory/ID = 'StandardRated'</Description>
+            <Xpath>
+               <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
+            </Xpath>
+         </Error>
+      </xsl:if>
       <xsl:apply-templates select="@*|*|comment()|processing-instruction()" mode="M36"/>
    </xsl:template>
    <!--RULE -->
@@ -14705,15 +14752,28 @@
             </Xpath>
          </Error>
       </xsl:if>
-      <xsl:variable name="CalculatedVat"
-                    select="(cbc:TaxableAmount div 100) * cac:TaxCategory/cbc:Percent"/>
       <!--REPORT -->
-      <xsl:if test="cac:TaxCategory/cbc:ID = 'StandardRated' and cbc:TaxableAmount &gt; 0 and cbc:TaxAmount = 0 and $CalculatedVat &gt;= 0.005">
+      <xsl:if test="cac:TaxCategory/cbc:ID = 'StandardRated' and cac:TaxCategory/cbc:Percent = '0.00'">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>cac:TaxCategory/cbc:ID = 'StandardRated' and cbc:TaxableAmount &gt; 0 and cbc:TaxAmount = 0 and $CalculatedVat &gt;= 0.005</Pattern>
+            <Pattern>cac:TaxCategory/cbc:ID = 'StandardRated' and cac:TaxCategory/cbc:Percent = '0.00'</Pattern>
+            <Description>[F-LIB382] When 'TaxCategor\ID' = 'StandardRated', 'TaxCategory\Percent' can not be '0.00'</Description>
+            <Xpath>
+               <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
+            </Xpath>
+         </Error>
+      </xsl:if>
+      <xsl:variable name="CalculatedVat"
+                    select="(cbc:TaxableAmount div 100) * cac:TaxCategory/cbc:Percent"/>
+      <!--REPORT -->
+      <xsl:if test="cac:TaxCategory/cbc:ID = 'StandardRated' and cbc:TaxableAmount &gt; 0 and cbc:TaxAmount = 0 and xs:decimal($CalculatedVat) &gt;= 0.005">
+         <Error>
+            <xsl:attribute name="context">
+               <xsl:value-of select="concat(name(parent::*),'/',name())"/>
+            </xsl:attribute>
+            <Pattern>cac:TaxCategory/cbc:ID = 'StandardRated' and cbc:TaxableAmount &gt; 0 and cbc:TaxAmount = 0 and xs:decimal($CalculatedVat) &gt;= 0.005</Pattern>
             <Description>[F-LIB381] Invalid VAT TaxAmount - When TaxCategory/ID are 'StandardRated' and TaxableAmount &gt; 0 (<xsl:text/>
                <xsl:value-of select="cbc:TaxableAmount"/>
                <xsl:text/>) TaxAmount can't be '(<xsl:text/>
@@ -14760,6 +14820,53 @@
             </xsl:attribute>
             <Pattern>(cac:TaxCategory/cac:TaxScheme/cbc:ID = 'VAT') and ((cac:TaxCategory/cbc:Percent = '') or (string-length(substring-after(cac:TaxCategory/cbc:Percent, '.')) &gt; 2))</Pattern>
             <Description>[F-LIB334] The TaxCategory/Percent must contain a decimal value with maximum 2 decimals.</Description>
+            <Xpath>
+               <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
+            </Xpath>
+         </Error>
+      </xsl:if>
+      <!--REPORT -->
+      <xsl:if test="cac:TaxCategory/cbc:ID = 'StandardRated' and cac:TaxCategory/cbc:Percent = '0,00'">
+         <Error>
+            <xsl:attribute name="context">
+               <xsl:value-of select="concat(name(parent::*),'/',name())"/>
+            </xsl:attribute>
+            <Pattern>cac:TaxCategory/cbc:ID = 'StandardRated' and cac:TaxCategory/cbc:Percent = '0,00'</Pattern>
+            <Description>[F-LIB382] When 'TaxCategor\ID' = 'StandardRated', 'TaxCategory\Percent' can not be '0.00'</Description>
+            <Xpath>
+               <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
+            </Xpath>
+         </Error>
+      </xsl:if>
+      <xsl:variable name="CalculatedVat2"
+                    select="(cbc:TaxableAmount div 100) * cac:TaxCategory/cbc:Percent"/>
+      <!--REPORT -->
+      <xsl:if test="cac:TaxCategory/cbc:ID = 'StandardRated' and cbc:TaxableAmount &gt; 0 and cbc:TaxAmount = 0 and $CalculatedVat2 &gt;= 0.005">
+         <Error>
+            <xsl:attribute name="context">
+               <xsl:value-of select="concat(name(parent::*),'/',name())"/>
+            </xsl:attribute>
+            <Pattern>cac:TaxCategory/cbc:ID = 'StandardRated' and cbc:TaxableAmount &gt; 0 and cbc:TaxAmount = 0 and $CalculatedVat2 &gt;= 0.005</Pattern>
+            <Description>[F-LIB381] Invalid VAT TaxAmount - When TaxCategory/ID are 'StandardRated' and TaxableAmount &gt; 0 (<xsl:text/>
+               <xsl:value-of select="cbc:TaxableAmount"/>
+               <xsl:text/>) TaxAmount can't be '(<xsl:text/>
+               <xsl:value-of select="cbc:TaxAmount"/>
+               <xsl:text/>)' unless calculated vat '(<xsl:text/>
+               <xsl:value-of select="$CalculatedVat2"/>
+               <xsl:text/>)' are less then 0.005</Description>
+            <Xpath>
+               <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
+            </Xpath>
+         </Error>
+      </xsl:if>
+      <!--REPORT -->
+      <xsl:if test="cbc:TransactionCurrencyTaxAmount and not(cac:TaxCategory/cbc:ID = 'StandardRated')">
+         <Error>
+            <xsl:attribute name="context">
+               <xsl:value-of select="concat(name(parent::*),'/',name())"/>
+            </xsl:attribute>
+            <Pattern>cbc:TransactionCurrencyTaxAmount and not(cac:TaxCategory/cbc:ID = 'StandardRated')</Pattern>
+            <Description>[F-LIB373] TransactionCurrencyTaxAmount only valid when TaxCategory/ID = 'StandardRated'</Description>
             <Xpath>
                <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
             </Xpath>
@@ -15519,12 +15626,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="((cbc:LineExtensionAmount - sum(../cac:CreditNoteLine/cbc:LineExtensionAmount)) &gt; '0.0055') or ((cbc:LineExtensionAmount - sum(../cac:CreditNoteLine/cbc:LineExtensionAmount)) &lt; '-0.0055')">
+      <xsl:if test="((cbc:LineExtensionAmount - sum(../cac:CreditNoteLine/cbc:LineExtensionAmount)) &gt; 0.0055) or ((cbc:LineExtensionAmount - sum(../cac:CreditNoteLine/cbc:LineExtensionAmount)) &lt; -0.0055)">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>((cbc:LineExtensionAmount - sum(../cac:CreditNoteLine/cbc:LineExtensionAmount)) &gt; '0.0055') or ((cbc:LineExtensionAmount - sum(../cac:CreditNoteLine/cbc:LineExtensionAmount)) &lt; '-0.0055')</Pattern>
+            <Pattern>((cbc:LineExtensionAmount - sum(../cac:CreditNoteLine/cbc:LineExtensionAmount)) &gt; 0.0055) or ((cbc:LineExtensionAmount - sum(../cac:CreditNoteLine/cbc:LineExtensionAmount)) &lt; -0.0055)</Pattern>
             <Description>[F-CRN072] The sum of CreditNoteLine/LineExtensionAmount ('<xsl:text/>
                <xsl:value-of select="$TotalLineExtensionAmount"/>
                <xsl:text/>') elements must equal LineExtensionAmount ('<xsl:text/>
@@ -15614,12 +15721,12 @@
          </Error>
       </xsl:if>
       <xsl:variable name="PayableSum"
-                    select="format-number (sum(cbc:PayableAmount) ,'##.00')"/>
+                    select="format-number (sum(cbc:PayableAmount) ,'#0.00')"/>
       <xsl:variable name="TotalSum"
-                    select="format-number (sum(cbc:LineExtensionAmount) + sum(../cac:TaxTotal/cac:TaxSubtotal/cbc:TaxAmount) + sum(cbc:ChargeTotalAmount) - sum(cbc:AllowanceTotalAmount) - sum(cbc:PrepaidAmount) + sum(cbc:PayableRoundingAmount),'##.00')"/>
+                    select="format-number (sum(cbc:LineExtensionAmount) + sum(../cac:TaxTotal/cac:TaxSubtotal/cbc:TaxAmount) + sum(cbc:ChargeTotalAmount) - sum(cbc:AllowanceTotalAmount) - sum(cbc:PrepaidAmount) + sum(cbc:PayableRoundingAmount),'#0.00')"/>
       <xsl:variable xmlns:sch="http://purl.oclc.org/dsdl/schematron" name="AlteredPayableSum">
          <xsl:choose>
-            <xsl:when test="$TotalSum = -.00">.00</xsl:when>
+            <xsl:when test="xs:decimal($TotalSum) = -0.00">0.00</xsl:when>
             <xsl:otherwise>
                <xsl:value-of select="$TotalSum"/>
             </xsl:otherwise>
@@ -15926,20 +16033,22 @@
                     select="../cac:PricingExchangeRate/cbc:MathematicOperatorCode = 'divide'"/>
       <xsl:variable name="NegativeLEA" select="starts-with(cbc:CreditedQuantity,'-')"/>
       <xsl:variable name="NegativePA" select="starts-with(cac:Price/cbc:PriceAmount,'-')"/>
+      <xsl:variable name="NegativeAllowanceAmount"
+                    select="boolean(cac:Price/cac:AllowanceCharge/cbc:Amount[starts-with(.,'-')])"/>
       <xsl:variable name="orderableUnitFactorRate"
-                    select="concat(                                                                 substring(cac:Price/cbc:OrderableUnitFactorRate, 1, number(normalize-space(cac:Price/cbc:OrderableUnitFactorRate) != '') * string-length(cac:Price/cbc:OrderableUnitFactorRate)),                                                                 substring(1, 1, number(not(normalize-space(cac:Price/cbc:OrderableUnitFactorRate) != '')) * 1)                                                             )"/>
+                    select="format-number (cac:Price/cbc:OrderableUnitFactorRate,'#.00')"/>
       <xsl:variable name="quantity" select="cbc:CreditedQuantity"/>
       <xsl:variable name="priceAmount" select="cac:Price/cbc:PriceAmount"/>
       <xsl:variable name="baseQuantity"
-                    select="concat(                                                                 substring(cac:Price/cbc:BaseQuantity, 1, number(normalize-space(cac:Price/cbc:BaseQuantity) != '') * string-length(cac:Price/cbc:BaseQuantity)),                                                                 substring(1, 1, number(not(normalize-space(cac:Price/cbc:BaseQuantity) != '')) * 1)                                                             )"/>
+                    select="format-number (cac:Price/cbc:BaseQuantity,'#.00')"/>
       <xsl:variable name="lineExtensionAmount"
-                    select="concat(                                                                 substring(cbc:LineExtensionAmount, 1, number(normalize-space(cbc:LineExtensionAmount) != '' ) * string-length(cbc:LineExtensionAmount)),                                                                 substring(0, 1, number(not(normalize-space(cbc:LineExtensionAmount) != '')) * 1)                                                         )"/>
+                    select="format-number (cbc:LineExtensionAmount,'#.00')"/>
       <xsl:variable name="calculatedTotal"
-                    select="($priceAmount div $baseQuantity) * $quantity"/>
+                    select="(xs:double($priceAmount) div xs:double($baseQuantity)) * $quantity"/>
       <xsl:variable name="calculatedTotalUnitCodeDifferent"
-                    select="$priceAmount * $quantity * $orderableUnitFactorRate"/>
+                    select="xs:double($priceAmount) * xs:double($quantity) * xs:double($orderableUnitFactorRate)"/>
       <xsl:variable name="calculatedTotalUnitCodeEqual"
-                    select="($priceAmount * $quantity) div $baseQuantity"/>
+                    select="(xs:double($priceAmount) * xs:double($quantity)) div xs:double($baseQuantity)"/>
       <xsl:variable name="unitCodeDifferent"
                     select="cbc:CreditedQuantity/@unitCode != cac:Price/cbc:BaseQuantity/@unitCode"/>
       <xsl:variable name="unitCodeEqual"
@@ -16034,12 +16143,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="not($NegativeLEA or $NegativePA) and starts-with(cac:Price/cac:AllowanceCharge/cbc:Amount,'-')">
+      <xsl:if test="not($NegativeLEA or $NegativePA) and $NegativeAllowanceAmount">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>not($NegativeLEA or $NegativePA) and starts-with(cac:Price/cac:AllowanceCharge/cbc:Amount,'-')</Pattern>
+            <Pattern>not($NegativeLEA or $NegativePA) and $NegativeAllowanceAmount</Pattern>
             <Description>[F-CRN203] AllowanceCharge.Amount can not be negative, if CreditedQuantity or Price.PriceAmount is not negative.</Description>
             <Xpath>
                <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
@@ -16064,12 +16173,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="$unitCodeDifferent and ($notFree and $noFactorRate and not($noExchangeRate) and not($CRandMOC) and $Multiply) and ((cbc:LineExtensionAmount &lt; ($calculatedTotalUnitCodeDifferent * ../cac:PricingExchangeRate/cbc:CalculationRate - '01.00')) or (cbc:LineExtensionAmount &gt; ($calculatedTotalUnitCodeDifferent * ../cac:PricingExchangeRate/cbc:CalculationRate + '01.00')))">
+      <xsl:if test="$unitCodeDifferent and ($notFree and $noFactorRate and not($noExchangeRate) and not($CRandMOC) and $Multiply) and ((xs:double(cbc:LineExtensionAmount) &lt; (xs:double($calculatedTotalUnitCodeDifferent) * xs:double(../cac:PricingExchangeRate/cbc:CalculationRate) - 01.00)) or (xs:double(cbc:LineExtensionAmount) &gt; (xs:double($calculatedTotalUnitCodeDifferent) * xs:double(../cac:PricingExchangeRate/cbc:CalculationRate) + 01.00)))">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>$unitCodeDifferent and ($notFree and $noFactorRate and not($noExchangeRate) and not($CRandMOC) and $Multiply) and ((cbc:LineExtensionAmount &lt; ($calculatedTotalUnitCodeDifferent * ../cac:PricingExchangeRate/cbc:CalculationRate - '01.00')) or (cbc:LineExtensionAmount &gt; ($calculatedTotalUnitCodeDifferent * ../cac:PricingExchangeRate/cbc:CalculationRate + '01.00')))</Pattern>
+            <Pattern>$unitCodeDifferent and ($notFree and $noFactorRate and not($noExchangeRate) and not($CRandMOC) and $Multiply) and ((xs:double(cbc:LineExtensionAmount) &lt; (xs:double($calculatedTotalUnitCodeDifferent) * xs:double(../cac:PricingExchangeRate/cbc:CalculationRate) - 01.00)) or (xs:double(cbc:LineExtensionAmount) &gt; (xs:double($calculatedTotalUnitCodeDifferent) * xs:double(../cac:PricingExchangeRate/cbc:CalculationRate) + 01.00)))</Pattern>
             <Description>[F-CRN212] CreditNote line '<xsl:text/>
                <xsl:value-of select="cbc:ID"/>
                <xsl:text/>' with lineExtensionAmount (<xsl:text/>
@@ -16085,12 +16194,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="$unitCodeEqual     and ($notFree and $noFactorRate and not($noExchangeRate) and not($CRandMOC) and $Multiply) and ((cbc:LineExtensionAmount &lt; ($calculatedTotalUnitCodeEqual * ../cac:PricingExchangeRate/cbc:CalculationRate - '01.00')) or (cbc:LineExtensionAmount &gt; ($calculatedTotalUnitCodeEqual * ../cac:PricingExchangeRate/cbc:CalculationRate + '01.00')))">
+      <xsl:if test="$unitCodeEqual     and ($notFree and $noFactorRate and not($noExchangeRate) and not($CRandMOC) and $Multiply) and ((xs:double(cbc:LineExtensionAmount) &lt; (xs:double($calculatedTotalUnitCodeEqual) * xs:double(../cac:PricingExchangeRate/cbc:CalculationRate) - 01.00)) or (xs:double(cbc:LineExtensionAmount) &gt; (xs:double($calculatedTotalUnitCodeEqual) * xs:double(../cac:PricingExchangeRate/cbc:CalculationRate) + 01.00)))">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>$unitCodeEqual and ($notFree and $noFactorRate and not($noExchangeRate) and not($CRandMOC) and $Multiply) and ((cbc:LineExtensionAmount &lt; ($calculatedTotalUnitCodeEqual * ../cac:PricingExchangeRate/cbc:CalculationRate - '01.00')) or (cbc:LineExtensionAmount &gt; ($calculatedTotalUnitCodeEqual * ../cac:PricingExchangeRate/cbc:CalculationRate + '01.00')))</Pattern>
+            <Pattern>$unitCodeEqual and ($notFree and $noFactorRate and not($noExchangeRate) and not($CRandMOC) and $Multiply) and ((xs:double(cbc:LineExtensionAmount) &lt; (xs:double($calculatedTotalUnitCodeEqual) * xs:double(../cac:PricingExchangeRate/cbc:CalculationRate) - 01.00)) or (xs:double(cbc:LineExtensionAmount) &gt; (xs:double($calculatedTotalUnitCodeEqual) * xs:double(../cac:PricingExchangeRate/cbc:CalculationRate) + 01.00)))</Pattern>
             <Description>[F-CRN213] CreditNote line '<xsl:text/>
                <xsl:value-of select="cbc:ID"/>
                <xsl:text/>' with lineExtensionAmount (<xsl:text/>
@@ -16108,12 +16217,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="$unitCodeNeither   and ($notFree and $noFactorRate and not($noExchangeRate) and not($CRandMOC) and $Multiply) and ((cbc:LineExtensionAmount &lt; ($calculatedTotalUnitCodeEqual * ../cac:PricingExchangeRate/cbc:CalculationRate - '01.00')) or (cbc:LineExtensionAmount &gt; ($calculatedTotalUnitCodeEqual * ../cac:PricingExchangeRate/cbc:CalculationRate + '01.00')))">
+      <xsl:if test="$unitCodeNeither   and ($notFree and $noFactorRate and not($noExchangeRate) and not($CRandMOC) and $Multiply) and ((xs:double(cbc:LineExtensionAmount) &lt; (xs:double($calculatedTotalUnitCodeEqual) * xs:double(../cac:PricingExchangeRate/cbc:CalculationRate) - 01.00)) or (xs:double(cbc:LineExtensionAmount) &gt; (xs:double($calculatedTotalUnitCodeEqual) * xs:double(../cac:PricingExchangeRate/cbc:CalculationRate) + 01.00)))">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>$unitCodeNeither and ($notFree and $noFactorRate and not($noExchangeRate) and not($CRandMOC) and $Multiply) and ((cbc:LineExtensionAmount &lt; ($calculatedTotalUnitCodeEqual * ../cac:PricingExchangeRate/cbc:CalculationRate - '01.00')) or (cbc:LineExtensionAmount &gt; ($calculatedTotalUnitCodeEqual * ../cac:PricingExchangeRate/cbc:CalculationRate + '01.00')))</Pattern>
+            <Pattern>$unitCodeNeither and ($notFree and $noFactorRate and not($noExchangeRate) and not($CRandMOC) and $Multiply) and ((xs:double(cbc:LineExtensionAmount) &lt; (xs:double($calculatedTotalUnitCodeEqual) * xs:double(../cac:PricingExchangeRate/cbc:CalculationRate) - 01.00)) or (xs:double(cbc:LineExtensionAmount) &gt; (xs:double($calculatedTotalUnitCodeEqual) * xs:double(../cac:PricingExchangeRate/cbc:CalculationRate) + 01.00)))</Pattern>
             <Description>[F-CRN198] CreditNote line '<xsl:text/>
                <xsl:value-of select="cbc:ID"/>
                <xsl:text/>' with lineExtensionAmount (<xsl:text/>
@@ -16129,12 +16238,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="$unitCodeDifferent and ($notFree and $noFactorRate and not($noExchangeRate) and not($CRandMOC) and $Divide) and ((cbc:LineExtensionAmount &lt; ((( $calculatedTotalUnitCodeDifferent ) div ../cac:PricingExchangeRate/cbc:CalculationRate) - '01.00')) or (cbc:LineExtensionAmount &gt; ((($calculatedTotalUnitCodeDifferent) div ../cac:PricingExchangeRate/cbc:CalculationRate) + '01.00')))">
+      <xsl:if test="$unitCodeDifferent and ($notFree and $noFactorRate and not($noExchangeRate) and not($CRandMOC) and $Divide) and ((xs:double(cbc:LineExtensionAmount) &lt; (((xs:double($calculatedTotalUnitCodeDifferent)) div xs:double(../cac:PricingExchangeRate/cbc:CalculationRate)) - 01.00)) or (xs:double(cbc:LineExtensionAmount) &gt; (((xs:double($calculatedTotalUnitCodeDifferent)) div xs:double(../cac:PricingExchangeRate/cbc:CalculationRate)) + 01.00)))">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>$unitCodeDifferent and ($notFree and $noFactorRate and not($noExchangeRate) and not($CRandMOC) and $Divide) and ((cbc:LineExtensionAmount &lt; ((( $calculatedTotalUnitCodeDifferent ) div ../cac:PricingExchangeRate/cbc:CalculationRate) - '01.00')) or (cbc:LineExtensionAmount &gt; ((($calculatedTotalUnitCodeDifferent) div ../cac:PricingExchangeRate/cbc:CalculationRate) + '01.00')))</Pattern>
+            <Pattern>$unitCodeDifferent and ($notFree and $noFactorRate and not($noExchangeRate) and not($CRandMOC) and $Divide) and ((xs:double(cbc:LineExtensionAmount) &lt; (((xs:double($calculatedTotalUnitCodeDifferent)) div xs:double(../cac:PricingExchangeRate/cbc:CalculationRate)) - 01.00)) or (xs:double(cbc:LineExtensionAmount) &gt; (((xs:double($calculatedTotalUnitCodeDifferent)) div xs:double(../cac:PricingExchangeRate/cbc:CalculationRate)) + 01.00)))</Pattern>
             <Description>[F-CRN214] CreditNote line '<xsl:text/>
                <xsl:value-of select="cbc:ID"/>
                <xsl:text/>' with lineExtensionAmount (<xsl:text/>
@@ -16152,12 +16261,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="$unitCodeEqual     and ($notFree and $noFactorRate and not($noExchangeRate) and not($CRandMOC) and $Divide) and ((cbc:LineExtensionAmount &lt; ((( $calculatedTotalUnitCodeEqual ) div ../cac:PricingExchangeRate/cbc:CalculationRate) - '01.00')) or (cbc:LineExtensionAmount &gt; ((($calculatedTotalUnitCodeEqual) div ../cac:PricingExchangeRate/cbc:CalculationRate) + '01.00')))">
+      <xsl:if test="$unitCodeEqual     and ($notFree and $noFactorRate and not($noExchangeRate) and not($CRandMOC) and $Divide) and ((xs:double(cbc:LineExtensionAmount) &lt; (((xs:double($calculatedTotalUnitCodeEqual)) div xs:double(../cac:PricingExchangeRate/cbc:CalculationRate)) - 01.00)) or (xs:double(cbc:LineExtensionAmount) &gt; (((xs:double($calculatedTotalUnitCodeEqual)) div xs:double(../cac:PricingExchangeRate/cbc:CalculationRate)) + 01.00)))">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>$unitCodeEqual and ($notFree and $noFactorRate and not($noExchangeRate) and not($CRandMOC) and $Divide) and ((cbc:LineExtensionAmount &lt; ((( $calculatedTotalUnitCodeEqual ) div ../cac:PricingExchangeRate/cbc:CalculationRate) - '01.00')) or (cbc:LineExtensionAmount &gt; ((($calculatedTotalUnitCodeEqual) div ../cac:PricingExchangeRate/cbc:CalculationRate) + '01.00')))</Pattern>
+            <Pattern>$unitCodeEqual and ($notFree and $noFactorRate and not($noExchangeRate) and not($CRandMOC) and $Divide) and ((xs:double(cbc:LineExtensionAmount) &lt; (((xs:double($calculatedTotalUnitCodeEqual)) div xs:double(../cac:PricingExchangeRate/cbc:CalculationRate)) - 01.00)) or (xs:double(cbc:LineExtensionAmount) &gt; (((xs:double($calculatedTotalUnitCodeEqual)) div xs:double(../cac:PricingExchangeRate/cbc:CalculationRate)) + 01.00)))</Pattern>
             <Description>[F-CRN215] CreditNote line '<xsl:text/>
                <xsl:value-of select="cbc:ID"/>
                <xsl:text/>' with lineExtensionAmount (<xsl:text/>
@@ -16175,12 +16284,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="$unitCodeNeither   and ($notFree and $noFactorRate and not($noExchangeRate) and not($CRandMOC) and $Divide) and ((cbc:LineExtensionAmount &lt; ((( $calculatedTotalUnitCodeEqual ) div ../cac:PricingExchangeRate/cbc:CalculationRate) - '01.00')) or (cbc:LineExtensionAmount &gt; ((($calculatedTotalUnitCodeEqual) div ../cac:PricingExchangeRate/cbc:CalculationRate) + '01.00')))">
+      <xsl:if test="$unitCodeNeither   and ($notFree and $noFactorRate and not($noExchangeRate) and not($CRandMOC) and $Divide) and ((xs:double(cbc:LineExtensionAmount) &lt; (((xs:double($calculatedTotalUnitCodeEqual)) div xs:double(../cac:PricingExchangeRate/cbc:CalculationRate)) - 01.00)) or (xs:double(cbc:LineExtensionAmount) &gt; (((xs:double($calculatedTotalUnitCodeEqual)) div xs:double(../cac:PricingExchangeRate/cbc:CalculationRate)) + 01.00)))">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>$unitCodeNeither and ($notFree and $noFactorRate and not($noExchangeRate) and not($CRandMOC) and $Divide) and ((cbc:LineExtensionAmount &lt; ((( $calculatedTotalUnitCodeEqual ) div ../cac:PricingExchangeRate/cbc:CalculationRate) - '01.00')) or (cbc:LineExtensionAmount &gt; ((($calculatedTotalUnitCodeEqual) div ../cac:PricingExchangeRate/cbc:CalculationRate) + '01.00')))</Pattern>
+            <Pattern>$unitCodeNeither and ($notFree and $noFactorRate and not($noExchangeRate) and not($CRandMOC) and $Divide) and ((xs:double(cbc:LineExtensionAmount) &lt; (((xs:double($calculatedTotalUnitCodeEqual)) div xs:double(../cac:PricingExchangeRate/cbc:CalculationRate)) - 01.00)) or (xs:double(cbc:LineExtensionAmount) &gt; (((xs:double($calculatedTotalUnitCodeEqual)) div xs:double(../cac:PricingExchangeRate/cbc:CalculationRate)) + 01.00)))</Pattern>
             <Description>[F-CRN199] CreditNote line '<xsl:text/>
                <xsl:value-of select="cbc:ID"/>
                <xsl:text/>' with lineExtensionAmount (<xsl:text/>
@@ -16196,12 +16305,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="$unitCodeDifferent and ($notFree and $noExchangeRate) and (($lineExtensionAmount &lt; ($calculatedTotalUnitCodeDifferent - 1.00)) or ($lineExtensionAmount &gt; ($calculatedTotalUnitCodeDifferent + 1.00)))">
+      <xsl:if test="$unitCodeDifferent and ($notFree and $noExchangeRate) and ((xs:double($lineExtensionAmount) &lt; (xs:double($calculatedTotalUnitCodeDifferent) - 1.00)) or (xs:double($lineExtensionAmount) &gt; (xs:double($calculatedTotalUnitCodeDifferent) + 1.00)))">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>$unitCodeDifferent and ($notFree and $noExchangeRate) and (($lineExtensionAmount &lt; ($calculatedTotalUnitCodeDifferent - 1.00)) or ($lineExtensionAmount &gt; ($calculatedTotalUnitCodeDifferent + 1.00)))</Pattern>
+            <Pattern>$unitCodeDifferent and ($notFree and $noExchangeRate) and ((xs:double($lineExtensionAmount) &lt; (xs:double($calculatedTotalUnitCodeDifferent) - 1.00)) or (xs:double($lineExtensionAmount) &gt; (xs:double($calculatedTotalUnitCodeDifferent) + 1.00)))</Pattern>
             <Description>[F-CRN194] CreditNote line '<xsl:text/>
                <xsl:value-of select="cbc:ID"/>
                <xsl:text/>' with lineExtensionAmount (<xsl:text/>
@@ -16219,12 +16328,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="$unitCodeEqual     and ($notFree and $noExchangeRate) and (($lineExtensionAmount &lt; ($calculatedTotalUnitCodeEqual - 1.00)) or ($lineExtensionAmount &gt; ($calculatedTotalUnitCodeEqual  + 1.00)))">
+      <xsl:if test="$unitCodeEqual     and ($notFree and $noExchangeRate) and ((xs:double($lineExtensionAmount) &lt; (xs:double($calculatedTotalUnitCodeEqual) - 1.00)) or (xs:double($lineExtensionAmount) &gt; (xs:double($calculatedTotalUnitCodeEqual)  + 1.00)))">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>$unitCodeEqual and ($notFree and $noExchangeRate) and (($lineExtensionAmount &lt; ($calculatedTotalUnitCodeEqual - 1.00)) or ($lineExtensionAmount &gt; ($calculatedTotalUnitCodeEqual + 1.00)))</Pattern>
+            <Pattern>$unitCodeEqual and ($notFree and $noExchangeRate) and ((xs:double($lineExtensionAmount) &lt; (xs:double($calculatedTotalUnitCodeEqual) - 1.00)) or (xs:double($lineExtensionAmount) &gt; (xs:double($calculatedTotalUnitCodeEqual) + 1.00)))</Pattern>
             <Description>[F-CRN210] CreditNote line '<xsl:text/>
                <xsl:value-of select="cbc:ID"/>
                <xsl:text/>' with lineExtensionAmount (<xsl:text/>
@@ -16242,12 +16351,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="$unitCodeNeither   and ($notFree and $noExchangeRate) and (($lineExtensionAmount &lt; ($calculatedTotalUnitCodeEqual - 1.00)) or ($lineExtensionAmount &gt; ($calculatedTotalUnitCodeEqual  + 1.00)))">
+      <xsl:if test="$unitCodeNeither   and ($notFree and $noExchangeRate) and ((xs:double($lineExtensionAmount) &lt; (xs:double($calculatedTotalUnitCodeEqual) - 1.00)) or (xs:double($lineExtensionAmount) &gt; (xs:double($calculatedTotalUnitCodeEqual)  + 1.00)))">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>$unitCodeNeither and ($notFree and $noExchangeRate) and (($lineExtensionAmount &lt; ($calculatedTotalUnitCodeEqual - 1.00)) or ($lineExtensionAmount &gt; ($calculatedTotalUnitCodeEqual + 1.00)))</Pattern>
+            <Pattern>$unitCodeNeither and ($notFree and $noExchangeRate) and ((xs:double($lineExtensionAmount) &lt; (xs:double($calculatedTotalUnitCodeEqual) - 1.00)) or (xs:double($lineExtensionAmount) &gt; (xs:double($calculatedTotalUnitCodeEqual) + 1.00)))</Pattern>
             <Description>[F-CRN216] CreditNote line '<xsl:text/>
                <xsl:value-of select="cbc:ID"/>
                <xsl:text/>' with lineExtensionAmount (<xsl:text/>
@@ -16263,12 +16372,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="$unitCodeDifferent and ($notFree and not($noFactorRate) and not($noExchangeRate) and not($CRandMOC) and $Multiply) and ((cbc:LineExtensionAmount &lt; ($calculatedTotalUnitCodeDifferent * ../cac:PricingExchangeRate/cbc:CalculationRate - '01.00')) or (cbc:LineExtensionAmount &gt; ($calculatedTotalUnitCodeDifferent * ../cac:PricingExchangeRate/cbc:CalculationRate + '01.00')))">
+      <xsl:if test="$unitCodeDifferent and ($notFree and not($noFactorRate) and not($noExchangeRate) and not($CRandMOC) and $Multiply) and ((xs:double(cbc:LineExtensionAmount) &lt; (xs:double($calculatedTotalUnitCodeDifferent) * xs:double(../cac:PricingExchangeRate/cbc:CalculationRate) - 01.00)) or (xs:double(cbc:LineExtensionAmount) &gt; (xs:double($calculatedTotalUnitCodeDifferent) * xs:double(../cac:PricingExchangeRate/cbc:CalculationRate) + 01.00)))">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>$unitCodeDifferent and ($notFree and not($noFactorRate) and not($noExchangeRate) and not($CRandMOC) and $Multiply) and ((cbc:LineExtensionAmount &lt; ($calculatedTotalUnitCodeDifferent * ../cac:PricingExchangeRate/cbc:CalculationRate - '01.00')) or (cbc:LineExtensionAmount &gt; ($calculatedTotalUnitCodeDifferent * ../cac:PricingExchangeRate/cbc:CalculationRate + '01.00')))</Pattern>
+            <Pattern>$unitCodeDifferent and ($notFree and not($noFactorRate) and not($noExchangeRate) and not($CRandMOC) and $Multiply) and ((xs:double(cbc:LineExtensionAmount) &lt; (xs:double($calculatedTotalUnitCodeDifferent) * xs:double(../cac:PricingExchangeRate/cbc:CalculationRate) - 01.00)) or (xs:double(cbc:LineExtensionAmount) &gt; (xs:double($calculatedTotalUnitCodeDifferent) * xs:double(../cac:PricingExchangeRate/cbc:CalculationRate) + 01.00)))</Pattern>
             <Description>[F-CRN200] CreditNote line '<xsl:text/>
                <xsl:value-of select="cbc:ID"/>
                <xsl:text/>' with lineExtensionAmount (<xsl:text/>
@@ -16286,12 +16395,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="$unitCodeEqual     and ($notFree and not($noFactorRate) and not($noExchangeRate) and not($CRandMOC) and $Multiply) and ((cbc:LineExtensionAmount &lt; ($calculatedTotalUnitCodeEqual * ../cac:PricingExchangeRate/cbc:CalculationRate - '01.00')) or (cbc:LineExtensionAmount &gt; ($calculatedTotalUnitCodeEqual * ../cac:PricingExchangeRate/cbc:CalculationRate + '01.00')))">
+      <xsl:if test="$unitCodeEqual     and ($notFree and not($noFactorRate) and not($noExchangeRate) and not($CRandMOC) and $Multiply) and ((xs:double(cbc:LineExtensionAmount) &lt; (xs:double($calculatedTotalUnitCodeEqual) * xs:double(../cac:PricingExchangeRate/cbc:CalculationRate) - 01.00)) or (xs:double(cbc:LineExtensionAmount) &gt; (xs:double($calculatedTotalUnitCodeEqual) * xs:double(../cac:PricingExchangeRate/cbc:CalculationRate) + 01.00)))">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>$unitCodeEqual and ($notFree and not($noFactorRate) and not($noExchangeRate) and not($CRandMOC) and $Multiply) and ((cbc:LineExtensionAmount &lt; ($calculatedTotalUnitCodeEqual * ../cac:PricingExchangeRate/cbc:CalculationRate - '01.00')) or (cbc:LineExtensionAmount &gt; ($calculatedTotalUnitCodeEqual * ../cac:PricingExchangeRate/cbc:CalculationRate + '01.00')))</Pattern>
+            <Pattern>$unitCodeEqual and ($notFree and not($noFactorRate) and not($noExchangeRate) and not($CRandMOC) and $Multiply) and ((xs:double(cbc:LineExtensionAmount) &lt; (xs:double($calculatedTotalUnitCodeEqual) * xs:double(../cac:PricingExchangeRate/cbc:CalculationRate) - 01.00)) or (xs:double(cbc:LineExtensionAmount) &gt; (xs:double($calculatedTotalUnitCodeEqual) * xs:double(../cac:PricingExchangeRate/cbc:CalculationRate) + 01.00)))</Pattern>
             <Description>[F-CRN217] CreditNote line '<xsl:text/>
                <xsl:value-of select="cbc:ID"/>
                <xsl:text/>' with lineExtensionAmount (<xsl:text/>
@@ -16309,12 +16418,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="$unitCodeNeither   and ($notFree and not($noFactorRate) and not($noExchangeRate) and not($CRandMOC) and $Multiply) and ((cbc:LineExtensionAmount &lt; ($calculatedTotalUnitCodeEqual * ../cac:PricingExchangeRate/cbc:CalculationRate - '01.00')) or (cbc:LineExtensionAmount &gt; ($calculatedTotalUnitCodeEqual * ../cac:PricingExchangeRate/cbc:CalculationRate + '01.00')))">
+      <xsl:if test="$unitCodeNeither   and ($notFree and not($noFactorRate) and not($noExchangeRate) and not($CRandMOC) and $Multiply) and ((xs:double(cbc:LineExtensionAmount) &lt; (xs:double($calculatedTotalUnitCodeEqual) * xs:double(../cac:PricingExchangeRate/cbc:CalculationRate) - 01.00)) or (xs:double(cbc:LineExtensionAmount) &gt; (xs:double($calculatedTotalUnitCodeEqual) * xs:double(../cac:PricingExchangeRate/cbc:CalculationRate) + 01.00)))">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>$unitCodeNeither and ($notFree and not($noFactorRate) and not($noExchangeRate) and not($CRandMOC) and $Multiply) and ((cbc:LineExtensionAmount &lt; ($calculatedTotalUnitCodeEqual * ../cac:PricingExchangeRate/cbc:CalculationRate - '01.00')) or (cbc:LineExtensionAmount &gt; ($calculatedTotalUnitCodeEqual * ../cac:PricingExchangeRate/cbc:CalculationRate + '01.00')))</Pattern>
+            <Pattern>$unitCodeNeither and ($notFree and not($noFactorRate) and not($noExchangeRate) and not($CRandMOC) and $Multiply) and ((xs:double(cbc:LineExtensionAmount) &lt; (xs:double($calculatedTotalUnitCodeEqual) * xs:double(../cac:PricingExchangeRate/cbc:CalculationRate) - 01.00)) or (xs:double(cbc:LineExtensionAmount) &gt; (xs:double($calculatedTotalUnitCodeEqual) * xs:double(../cac:PricingExchangeRate/cbc:CalculationRate) + 01.00)))</Pattern>
             <Description>[F-CRN218] CreditNote line '<xsl:text/>
                <xsl:value-of select="cbc:ID"/>
                <xsl:text/>' with lineExtensionAmount (<xsl:text/>
@@ -16328,12 +16437,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="$unitCodeDifferent and ($notFree and not($noFactorRate) and not($noExchangeRate) and not($CRandMOC) and $Divide) and (((cbc:LineExtensionAmount &lt; ($calculatedTotalUnitCodeDifferent div ../cac:PricingExchangeRate/cbc:CalculationRate) - '01.00')) or (cbc:LineExtensionAmount &gt; (($calculatedTotalUnitCodeDifferent div ../cac:PricingExchangeRate/cbc:CalculationRate) + '01.00')))">
+      <xsl:if test="$unitCodeDifferent and ($notFree and not($noFactorRate) and not($noExchangeRate) and not($CRandMOC) and $Divide) and (((xs:double(cbc:LineExtensionAmount) &lt; (xs:double($calculatedTotalUnitCodeDifferent) div xs:double(../cac:PricingExchangeRate/cbc:CalculationRate)) - 01.00)) or (xs:double(cbc:LineExtensionAmount) &gt; ((xs:double($calculatedTotalUnitCodeDifferent) div xs:double(../cac:PricingExchangeRate/cbc:CalculationRate)) + 01.00)))">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>$unitCodeDifferent and ($notFree and not($noFactorRate) and not($noExchangeRate) and not($CRandMOC) and $Divide) and (((cbc:LineExtensionAmount &lt; ($calculatedTotalUnitCodeDifferent div ../cac:PricingExchangeRate/cbc:CalculationRate) - '01.00')) or (cbc:LineExtensionAmount &gt; (($calculatedTotalUnitCodeDifferent div ../cac:PricingExchangeRate/cbc:CalculationRate) + '01.00')))</Pattern>
+            <Pattern>$unitCodeDifferent and ($notFree and not($noFactorRate) and not($noExchangeRate) and not($CRandMOC) and $Divide) and (((xs:double(cbc:LineExtensionAmount) &lt; (xs:double($calculatedTotalUnitCodeDifferent) div xs:double(../cac:PricingExchangeRate/cbc:CalculationRate)) - 01.00)) or (xs:double(cbc:LineExtensionAmount) &gt; ((xs:double($calculatedTotalUnitCodeDifferent) div xs:double(../cac:PricingExchangeRate/cbc:CalculationRate)) + 01.00)))</Pattern>
             <Description>[F-CRN201] CreditNote line '<xsl:text/>
                <xsl:value-of select="cbc:ID"/>
                <xsl:text/>' with lineExtensionAmount (<xsl:text/>
@@ -16351,12 +16460,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="$unitCodeEqual     and ($notFree and not($noFactorRate) and not($noExchangeRate) and not($CRandMOC) and $Divide) and (((cbc:LineExtensionAmount &lt; ($calculatedTotalUnitCodeEqual div ../cac:PricingExchangeRate/cbc:CalculationRate) - '01.00')) or (cbc:LineExtensionAmount &gt; (($calculatedTotalUnitCodeEqual div ../cac:PricingExchangeRate/cbc:CalculationRate) + '01.00')))">
+      <xsl:if test="$unitCodeEqual     and ($notFree and not($noFactorRate) and not($noExchangeRate) and not($CRandMOC) and $Divide) and (((xs:double(cbc:LineExtensionAmount) &lt; (xs:double($calculatedTotalUnitCodeEqual) div xs:double(../cac:PricingExchangeRate/cbc:CalculationRate)) - 01.00)) or (xs:double(cbc:LineExtensionAmount) &gt; ((xs:double($calculatedTotalUnitCodeEqual) div xs:double(../cac:PricingExchangeRate/cbc:CalculationRate)) + 01.00)))">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>$unitCodeEqual and ($notFree and not($noFactorRate) and not($noExchangeRate) and not($CRandMOC) and $Divide) and (((cbc:LineExtensionAmount &lt; ($calculatedTotalUnitCodeEqual div ../cac:PricingExchangeRate/cbc:CalculationRate) - '01.00')) or (cbc:LineExtensionAmount &gt; (($calculatedTotalUnitCodeEqual div ../cac:PricingExchangeRate/cbc:CalculationRate) + '01.00')))</Pattern>
+            <Pattern>$unitCodeEqual and ($notFree and not($noFactorRate) and not($noExchangeRate) and not($CRandMOC) and $Divide) and (((xs:double(cbc:LineExtensionAmount) &lt; (xs:double($calculatedTotalUnitCodeEqual) div xs:double(../cac:PricingExchangeRate/cbc:CalculationRate)) - 01.00)) or (xs:double(cbc:LineExtensionAmount) &gt; ((xs:double($calculatedTotalUnitCodeEqual) div xs:double(../cac:PricingExchangeRate/cbc:CalculationRate)) + 01.00)))</Pattern>
             <Description>[F-CRN219] CreditNote line '<xsl:text/>
                <xsl:value-of select="cbc:ID"/>
                <xsl:text/>' with lineExtensionAmount (<xsl:text/>
@@ -16374,12 +16483,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="$unitCodeNeither   and ($notFree and not($noFactorRate) and not($noExchangeRate) and not($CRandMOC) and $Divide) and (((cbc:LineExtensionAmount &lt; ($calculatedTotalUnitCodeEqual div ../cac:PricingExchangeRate/cbc:CalculationRate) - '01.00')) or (cbc:LineExtensionAmount &gt; (($calculatedTotalUnitCodeEqual div ../cac:PricingExchangeRate/cbc:CalculationRate) + '01.00')))">
+      <xsl:if test="$unitCodeNeither   and ($notFree and not($noFactorRate) and not($noExchangeRate) and not($CRandMOC) and $Divide) and (((xs:double(cbc:LineExtensionAmount) &lt; (xs:double($calculatedTotalUnitCodeEqual) div xs:double(../cac:PricingExchangeRate/cbc:CalculationRate)) - 01.00)) or (xs:double(cbc:LineExtensionAmount) &gt; ((xs:double($calculatedTotalUnitCodeEqual) div xs:double(../cac:PricingExchangeRate/cbc:CalculationRate)) + 01.00)))">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>$unitCodeNeither and ($notFree and not($noFactorRate) and not($noExchangeRate) and not($CRandMOC) and $Divide) and (((cbc:LineExtensionAmount &lt; ($calculatedTotalUnitCodeEqual div ../cac:PricingExchangeRate/cbc:CalculationRate) - '01.00')) or (cbc:LineExtensionAmount &gt; (($calculatedTotalUnitCodeEqual div ../cac:PricingExchangeRate/cbc:CalculationRate) + '01.00')))</Pattern>
+            <Pattern>$unitCodeNeither and ($notFree and not($noFactorRate) and not($noExchangeRate) and not($CRandMOC) and $Divide) and (((xs:double(cbc:LineExtensionAmount) &lt; (xs:double($calculatedTotalUnitCodeEqual) div xs:double(../cac:PricingExchangeRate/cbc:CalculationRate)) - 01.00)) or (xs:double(cbc:LineExtensionAmount) &gt; ((xs:double($calculatedTotalUnitCodeEqual) div xs:double(../cac:PricingExchangeRate/cbc:CalculationRate)) + 01.00)))</Pattern>
             <Description>[F-CRN220] CreditNote line '<xsl:text/>
                <xsl:value-of select="cbc:ID"/>
                <xsl:text/>' with lineExtensionAmount (<xsl:text/>
@@ -16612,12 +16721,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="local-name(following-sibling::*) = local-name(current()) and following-sibling::*/@languageID = self::*/@languageID">
+      <xsl:if test="following-sibling::*/@languageID = self::*/@languageID">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>local-name(following-sibling::*) = local-name(current()) and following-sibling::*/@languageID = self::*/@languageID</Pattern>
+            <Pattern>following-sibling::*/@languageID = self::*/@languageID</Pattern>
             <Description>[W-LIB223] Multilanguage error. Replicated Description elements with same languageID attribute value</Description>
             <Xpath>
                <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
@@ -17552,12 +17661,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="cbc:MultiplierFactorNumeric and ((cbc:Amount - (cbc:BaseAmount * cbc:MultiplierFactorNumeric) &lt; '-1.00') or (cbc:Amount - (cbc:BaseAmount * cbc:MultiplierFactorNumeric) &gt; '1.00'))">
+      <xsl:if test="cbc:MultiplierFactorNumeric and ((cbc:Amount - (cbc:BaseAmount * cbc:MultiplierFactorNumeric) &lt; -1.00) or (cbc:Amount - (cbc:BaseAmount * cbc:MultiplierFactorNumeric) &gt; 1.00))">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>cbc:MultiplierFactorNumeric and ((cbc:Amount - (cbc:BaseAmount * cbc:MultiplierFactorNumeric) &lt; '-1.00') or (cbc:Amount - (cbc:BaseAmount * cbc:MultiplierFactorNumeric) &gt; '1.00'))</Pattern>
+            <Pattern>cbc:MultiplierFactorNumeric and ((cbc:Amount - (cbc:BaseAmount * cbc:MultiplierFactorNumeric) &lt; -1.00) or (cbc:Amount - (cbc:BaseAmount * cbc:MultiplierFactorNumeric) &gt; 1.00))</Pattern>
             <Description>[F-LIB228] Amount must equal BaseAmount * MultiplierFactorNumeric</Description>
             <Xpath>
                <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
@@ -18617,12 +18726,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="local-name(following-sibling::*) = local-name(current()) and following-sibling::*/@languageID = self::*/@languageID">
+      <xsl:if test="following-sibling::*/@languageID = self::*/@languageID">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>local-name(following-sibling::*) = local-name(current()) and following-sibling::*/@languageID = self::*/@languageID</Pattern>
+            <Pattern>following-sibling::*/@languageID = self::*/@languageID</Pattern>
             <Description>[W-LIB223] Multilanguage error. Replicated Description elements with same languageID attribute value</Description>
             <Xpath>
                <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
@@ -18821,12 +18930,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
+      <xsl:if test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')</Pattern>
+            <Pattern>(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)</Pattern>
             <Description>[F-LIB031] An Unstructured address is only allowed to have AddressLine elements</Description>
             <Xpath>
                <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
@@ -18912,12 +19021,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
+      <xsl:if test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')</Pattern>
+            <Pattern>(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)</Pattern>
             <Description>[F-LIB038] Only the ID is used for a StructuredID address type</Description>
             <Xpath>
                <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
@@ -18938,12 +19047,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0')">
+      <xsl:if test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0)">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0')</Pattern>
+            <Pattern>(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0)</Pattern>
             <Description>[F-LIB040] Only Region, District, and/or Country/IdentificationCode can be used for a StructuredRegion address type</Description>
             <Xpath>
                <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
@@ -19103,12 +19212,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="local-name(following-sibling::*) = local-name(current()) and following-sibling::*/@languageID = self::*/@languageID">
+      <xsl:if test="following-sibling::*/@languageID = self::*/@languageID">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>local-name(following-sibling::*) = local-name(current()) and following-sibling::*/@languageID = self::*/@languageID</Pattern>
+            <Pattern>following-sibling::*/@languageID = self::*/@languageID</Pattern>
             <Description>[W-LIB223] Multilanguage error. Replicated Description elements with same languageID attribute value</Description>
             <Xpath>
                <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
@@ -19393,12 +19502,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="local-name(following-sibling::*) = local-name(current()) and following-sibling::*/cbc:Name/@languageID = self::*/cbc:Name/@languageID">
+      <xsl:if test="following-sibling::*/cbc:Name/@languageID = self::*/cbc:Name/@languageID">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>local-name(following-sibling::*) = local-name(current()) and following-sibling::*/cbc:Name/@languageID = self::*/cbc:Name/@languageID</Pattern>
+            <Pattern>following-sibling::*/cbc:Name/@languageID = self::*/cbc:Name/@languageID</Pattern>
             <Description>[W-LIB220] Multilanguage error. Replicated PartyName classes with same Name@languageID attribute value</Description>
             <Xpath>
                <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
@@ -19597,12 +19706,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
+      <xsl:if test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')</Pattern>
+            <Pattern>(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)</Pattern>
             <Description>[F-LIB031] An Unstructured address is only allowed to have AddressLine elements</Description>
             <Xpath>
                <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
@@ -19688,12 +19797,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
+      <xsl:if test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')</Pattern>
+            <Pattern>(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)</Pattern>
             <Description>[F-LIB038] Only the ID is used for a StructuredID address type</Description>
             <Xpath>
                <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
@@ -19714,12 +19823,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0')">
+      <xsl:if test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0)">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0')</Pattern>
+            <Pattern>(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0)</Pattern>
             <Description>[F-LIB040] Only Region, District, and/or Country/IdentificationCode can be used for a StructuredRegion address type</Description>
             <Xpath>
                <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
@@ -19899,12 +20008,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="local-name(following-sibling::*) = local-name(current()) and following-sibling::*/@languageID = self::*/@languageID">
+      <xsl:if test="following-sibling::*/@languageID = self::*/@languageID">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>local-name(following-sibling::*) = local-name(current()) and following-sibling::*/@languageID = self::*/@languageID</Pattern>
+            <Pattern>following-sibling::*/@languageID = self::*/@languageID</Pattern>
             <Description>[W-LIB223] Multilanguage error. Replicated Description elements with same languageID attribute value</Description>
             <Xpath>
                <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
@@ -20103,12 +20212,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
+      <xsl:if test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')</Pattern>
+            <Pattern>(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)</Pattern>
             <Description>[F-LIB031] An Unstructured address is only allowed to have AddressLine elements</Description>
             <Xpath>
                <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
@@ -20194,12 +20303,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
+      <xsl:if test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')</Pattern>
+            <Pattern>(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)</Pattern>
             <Description>[F-LIB038] Only the ID is used for a StructuredID address type</Description>
             <Xpath>
                <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
@@ -20220,12 +20329,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0')">
+      <xsl:if test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0)">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0')</Pattern>
+            <Pattern>(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0)</Pattern>
             <Description>[F-LIB040] Only Region, District, and/or Country/IdentificationCode can be used for a StructuredRegion address type</Description>
             <Xpath>
                <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
@@ -21112,6 +21221,53 @@
             </Xpath>
          </Error>
       </xsl:if>
+      <!--REPORT -->
+      <xsl:if test="cac:TaxCategory/cbc:ID = 'StandardRated' and cac:TaxCategory/cbc:Percent = '0,00'">
+         <Error>
+            <xsl:attribute name="context">
+               <xsl:value-of select="concat(name(parent::*),'/',name())"/>
+            </xsl:attribute>
+            <Pattern>cac:TaxCategory/cbc:ID = 'StandardRated' and cac:TaxCategory/cbc:Percent = '0,00'</Pattern>
+            <Description>[F-LIB382] When 'TaxCategor\ID' = 'StandardRated', 'TaxCategory\Percent' can not be '0.00'</Description>
+            <Xpath>
+               <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
+            </Xpath>
+         </Error>
+      </xsl:if>
+      <xsl:variable name="CalculatedVat"
+                    select="(cbc:TaxableAmount div 100) * cac:TaxCategory/cbc:Percent"/>
+      <!--REPORT -->
+      <xsl:if test="cac:TaxCategory/cbc:ID = 'StandardRated' and cbc:TaxableAmount &gt; 0 and cbc:TaxAmount = 0 and xs:decimal($CalculatedVat) &gt;= 0.005">
+         <Error>
+            <xsl:attribute name="context">
+               <xsl:value-of select="concat(name(parent::*),'/',name())"/>
+            </xsl:attribute>
+            <Pattern>cac:TaxCategory/cbc:ID = 'StandardRated' and cbc:TaxableAmount &gt; 0 and cbc:TaxAmount = 0 and xs:decimal($CalculatedVat) &gt;= 0.005</Pattern>
+            <Description>[F-LIB381] Invalid VAT TaxAmount - When TaxCategory/ID are 'StandardRated' and TaxableAmount &gt; 0 (<xsl:text/>
+               <xsl:value-of select="cbc:TaxableAmount"/>
+               <xsl:text/>) TaxAmount can't be '(<xsl:text/>
+               <xsl:value-of select="cbc:TaxAmount"/>
+               <xsl:text/>)' unless calculated vat '(<xsl:text/>
+               <xsl:value-of select="$CalculatedVat"/>
+               <xsl:text/>)' are less then 0.005</Description>
+            <Xpath>
+               <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
+            </Xpath>
+         </Error>
+      </xsl:if>
+      <!--REPORT -->
+      <xsl:if test="cbc:TransactionCurrencyTaxAmount and not(cac:TaxCategory/cbc:ID = 'StandardRated')">
+         <Error>
+            <xsl:attribute name="context">
+               <xsl:value-of select="concat(name(parent::*),'/',name())"/>
+            </xsl:attribute>
+            <Pattern>cbc:TransactionCurrencyTaxAmount and not(cac:TaxCategory/cbc:ID = 'StandardRated')</Pattern>
+            <Description>[F-LIB373] TransactionCurrencyTaxAmount only valid when TaxCategory/ID = 'StandardRated'</Description>
+            <Xpath>
+               <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
+            </Xpath>
+         </Error>
+      </xsl:if>
       <xsl:apply-templates select="@*|*|comment()|processing-instruction()" mode="M38"/>
    </xsl:template>
    <!--RULE -->
@@ -21307,15 +21463,28 @@
             </Xpath>
          </Error>
       </xsl:if>
-      <xsl:variable name="CalculatedVat"
-                    select="(cbc:TaxableAmount div 100) * cac:TaxCategory/cbc:Percent"/>
       <!--REPORT -->
-      <xsl:if test="cac:TaxCategory/cbc:ID = 'StandardRated' and cbc:TaxableAmount &gt; 0 and cbc:TaxAmount = 0 and $CalculatedVat &gt;= 0.005">
+      <xsl:if test="cac:TaxCategory/cbc:ID = 'StandardRated' and cac:TaxCategory/cbc:Percent = '0.00'">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>cac:TaxCategory/cbc:ID = 'StandardRated' and cbc:TaxableAmount &gt; 0 and cbc:TaxAmount = 0 and $CalculatedVat &gt;= 0.005</Pattern>
+            <Pattern>cac:TaxCategory/cbc:ID = 'StandardRated' and cac:TaxCategory/cbc:Percent = '0.00'</Pattern>
+            <Description>[F-LIB382] When 'TaxCategor\ID' = 'StandardRated', 'TaxCategory\Percent' can not be '0.00'</Description>
+            <Xpath>
+               <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
+            </Xpath>
+         </Error>
+      </xsl:if>
+      <xsl:variable name="CalculatedVat"
+                    select="(cbc:TaxableAmount div 100) * cac:TaxCategory/cbc:Percent"/>
+      <!--REPORT -->
+      <xsl:if test="cac:TaxCategory/cbc:ID = 'StandardRated' and cbc:TaxableAmount &gt; 0 and cbc:TaxAmount = 0 and xs:decimal($CalculatedVat) &gt;= 0.005">
+         <Error>
+            <xsl:attribute name="context">
+               <xsl:value-of select="concat(name(parent::*),'/',name())"/>
+            </xsl:attribute>
+            <Pattern>cac:TaxCategory/cbc:ID = 'StandardRated' and cbc:TaxableAmount &gt; 0 and cbc:TaxAmount = 0 and xs:decimal($CalculatedVat) &gt;= 0.005</Pattern>
             <Description>[F-LIB381] Invalid VAT TaxAmount - When TaxCategory/ID are 'StandardRated' and TaxableAmount &gt; 0 (<xsl:text/>
                <xsl:value-of select="cbc:TaxableAmount"/>
                <xsl:text/>) TaxAmount can't be '(<xsl:text/>
@@ -22156,12 +22325,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="local-name(following-sibling::*) = local-name(current()) and following-sibling::*/@languageID = self::*/@languageID">
+      <xsl:if test="following-sibling::*/@languageID = self::*/@languageID">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>local-name(following-sibling::*) = local-name(current()) and following-sibling::*/@languageID = self::*/@languageID</Pattern>
+            <Pattern>following-sibling::*/@languageID = self::*/@languageID</Pattern>
             <Description>[W-LIB223] Multilanguage error. Replicated Description elements with same languageID attribute value</Description>
             <Xpath>
                <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
@@ -22306,12 +22475,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="local-name(following-sibling::*) = local-name(current()) and following-sibling::*/@languageID = self::*/@languageID">
+      <xsl:if test="following-sibling::*/@languageID = self::*/@languageID">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>local-name(following-sibling::*) = local-name(current()) and following-sibling::*/@languageID = self::*/@languageID</Pattern>
+            <Pattern>following-sibling::*/@languageID = self::*/@languageID</Pattern>
             <Description>[W-LIB223] Multilanguage error. Replicated Description elements with same languageID attribute value</Description>
             <Xpath>
                <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
@@ -22362,12 +22531,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="local-name(following-sibling::*) = local-name(current()) and following-sibling::*/@languageID = self::*/@languageID">
+      <xsl:if test="following-sibling::*/@languageID = self::*/@languageID">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>local-name(following-sibling::*) = local-name(current()) and following-sibling::*/@languageID = self::*/@languageID</Pattern>
+            <Pattern>following-sibling::*/@languageID = self::*/@languageID</Pattern>
             <Description>[W-LIB223] Multilanguage error. Replicated Description elements with same languageID attribute value</Description>
             <Xpath>
                <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
@@ -22846,12 +23015,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="local-name(following-sibling::*) = local-name(current()) and following-sibling::*/@languageID = self::*/@languageID">
+      <xsl:if test="following-sibling::*/@languageID = self::*/@languageID">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>local-name(following-sibling::*) = local-name(current()) and following-sibling::*/@languageID = self::*/@languageID</Pattern>
+            <Pattern>following-sibling::*/@languageID = self::*/@languageID</Pattern>
             <Description>[W-LIB223] Multilanguage error. Replicated Description elements with same languageID attribute value</Description>
             <Xpath>
                <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
@@ -23793,12 +23962,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="local-name(following-sibling::*) = local-name(current()) and following-sibling::*/@languageID = self::*/@languageID">
+      <xsl:if test="following-sibling::*/@languageID = self::*/@languageID">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>local-name(following-sibling::*) = local-name(current()) and following-sibling::*/@languageID = self::*/@languageID</Pattern>
+            <Pattern>following-sibling::*/@languageID = self::*/@languageID</Pattern>
             <Description>[W-LIB223] Multilanguage error. Replicated Description elements with same languageID attribute value</Description>
             <Xpath>
                <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
@@ -24032,12 +24201,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
+      <xsl:if test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')</Pattern>
+            <Pattern>(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)</Pattern>
             <Description>[F-LIB031] An Unstructured address is only allowed to have AddressLine elements</Description>
             <Xpath>
                <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
@@ -24123,12 +24292,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
+      <xsl:if test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')</Pattern>
+            <Pattern>(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)</Pattern>
             <Description>[F-LIB038] Only the ID is used for a StructuredID address type</Description>
             <Xpath>
                <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
@@ -24149,12 +24318,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0')">
+      <xsl:if test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0)">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0')</Pattern>
+            <Pattern>(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0)</Pattern>
             <Description>[F-LIB040] Only Region, District, and/or Country/IdentificationCode can be used for a StructuredRegion address type</Description>
             <Xpath>
                <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
@@ -24359,12 +24528,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="local-name(following-sibling::*) = local-name(current()) and following-sibling::*/@languageID = self::*/@languageID">
+      <xsl:if test="following-sibling::*/@languageID = self::*/@languageID">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>local-name(following-sibling::*) = local-name(current()) and following-sibling::*/@languageID = self::*/@languageID</Pattern>
+            <Pattern>following-sibling::*/@languageID = self::*/@languageID</Pattern>
             <Description>[W-LIB223] Multilanguage error. Replicated Description elements with same languageID attribute value</Description>
             <Xpath>
                <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
@@ -24551,12 +24720,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="local-name(following-sibling::*) = local-name(current()) and following-sibling::*/@languageID = self::*/@languageID">
+      <xsl:if test="following-sibling::*/@languageID = self::*/@languageID">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>local-name(following-sibling::*) = local-name(current()) and following-sibling::*/@languageID = self::*/@languageID</Pattern>
+            <Pattern>following-sibling::*/@languageID = self::*/@languageID</Pattern>
             <Description>[W-LIB223] Multilanguage error. Replicated Description elements with same languageID attribute value</Description>
             <Xpath>
                <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
@@ -24775,12 +24944,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="local-name(following-sibling::*) = local-name(current()) and following-sibling::*/@languageID = self::*/@languageID">
+      <xsl:if test="following-sibling::*/@languageID = self::*/@languageID">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>local-name(following-sibling::*) = local-name(current()) and following-sibling::*/@languageID = self::*/@languageID</Pattern>
+            <Pattern>following-sibling::*/@languageID = self::*/@languageID</Pattern>
             <Description>[W-CRN140] Multilanguage error. Replicated PriceChangeReason elements with same languageID attribute value</Description>
             <Xpath>
                <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
@@ -24947,12 +25116,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="local-name(following-sibling::*) = local-name(current()) and following-sibling::*/@languageID = self::*/@languageID">
+      <xsl:if test="following-sibling::*/@languageID = self::*/@languageID">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>local-name(following-sibling::*) = local-name(current()) and following-sibling::*/@languageID = self::*/@languageID</Pattern>
+            <Pattern>following-sibling::*/@languageID = self::*/@languageID</Pattern>
             <Description>[W-LIB223] Multilanguage error. Replicated Description elements with same languageID attribute value</Description>
             <Xpath>
                <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
@@ -25050,12 +25219,12 @@
          </Error>
       </xsl:if>
       <!--REPORT -->
-      <xsl:if test="cbc:MultiplierFactorNumeric and ((cbc:Amount - (cbc:BaseAmount * cbc:MultiplierFactorNumeric) &lt; '-1.00') or (cbc:Amount - (cbc:BaseAmount * cbc:MultiplierFactorNumeric) &gt; '1.00'))">
+      <xsl:if test="cbc:MultiplierFactorNumeric and ((cbc:Amount - (cbc:BaseAmount * cbc:MultiplierFactorNumeric) &lt; -1.00) or (cbc:Amount - (cbc:BaseAmount * cbc:MultiplierFactorNumeric) &gt; 1.00))">
          <Error>
             <xsl:attribute name="context">
                <xsl:value-of select="concat(name(parent::*),'/',name())"/>
             </xsl:attribute>
-            <Pattern>cbc:MultiplierFactorNumeric and ((cbc:Amount - (cbc:BaseAmount * cbc:MultiplierFactorNumeric) &lt; '-1.00') or (cbc:Amount - (cbc:BaseAmount * cbc:MultiplierFactorNumeric) &gt; '1.00'))</Pattern>
+            <Pattern>cbc:MultiplierFactorNumeric and ((cbc:Amount - (cbc:BaseAmount * cbc:MultiplierFactorNumeric) &lt; -1.00) or (cbc:Amount - (cbc:BaseAmount * cbc:MultiplierFactorNumeric) &gt; 1.00))</Pattern>
             <Description>[F-LIB228] Amount must equal BaseAmount * MultiplierFactorNumeric</Description>
             <Xpath>
                <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()"/>[<xsl:value-of select="count(preceding-sibling::*[name(.)=name(current())])+1"/>]</xsl:for-each>
